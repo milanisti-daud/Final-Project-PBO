@@ -1,6 +1,7 @@
 # Final-Project-PBO
 
 ###Class Diagram
+```mermaid
 classDiagram
     Pengiriman <|-- Reguler
     Pengiriman <|-- Express
@@ -79,6 +80,7 @@ classDiagram
     }
 
 ###ER Diagram
+```mermaid
 erDiagram
           PENGIRIMAN ||--|| REGULER : is
           PENGIRIMAN ||--|| EXPRESS : is
