@@ -1,4 +1,4 @@
-# Final-Project-PBO
+# Final Project PBO - Dari Lampung Untuk Lampung
 
 Daud Maranatha Purba 1917051042
 
