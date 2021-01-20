@@ -84,6 +84,7 @@ classDiagram
         +int Harga
         +Transaksi(int ID, Pengirim pengirim, Pengiriman pengiriman, Penerima penerima, Lokasi lokasi)
     }
+```
 
 ### ER Diagram
 ```mermaid
@@ -137,3 +138,4 @@ erDiagram
             Pengiriman pengiriman
             int Harga
           }
+```
