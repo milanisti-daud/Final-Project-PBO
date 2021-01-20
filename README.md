@@ -6,7 +6,7 @@ Adrian Septa Yoka 1917051043
 
 Achmad Romadoni 1917051055
 
-Untuk pembagian tugas Final Projet dikerjakan bersama-sama
+Untuk pembagian tugas Final Project dikerjakan bersama-sama
 
 ### Class Diagram
 ```mermaid
