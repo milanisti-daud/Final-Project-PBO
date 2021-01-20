@@ -1,7 +1,9 @@
 # Final-Project-PBO
 
-Daud Maranatha Purba 1917051042 \n
-Adrian Septa Yoka 1917051043 \n
+Daud Maranatha Purba 1917051042
+
+Adrian Septa Yoka 1917051043
+
 Achmad Romadoni 1917051055
 
 Untuk pembagian tugas Final Projet dikerjakan bersama-sama
