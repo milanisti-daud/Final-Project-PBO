@@ -1,6 +1,12 @@
 # Final-Project-PBO
 
-###Class Diagram
+Daud Maranatha Purba 1917051042
+Adrian Septa Yoka 1917051043
+Achmad Romadoni 1917051055
+
+Untuk pembagian tugas Final Projet dikerjakan bersama-sama
+
+### Class Diagram
 ```mermaid
 classDiagram
     Pengiriman <|-- Reguler
@@ -79,7 +85,7 @@ classDiagram
         +Transaksi(int ID, Pengirim pengirim, Pengiriman pengiriman, Penerima penerima, Lokasi lokasi)
     }
 
-###ER Diagram
+### ER Diagram
 ```mermaid
 erDiagram
           PENGIRIMAN ||--|| REGULER : is
