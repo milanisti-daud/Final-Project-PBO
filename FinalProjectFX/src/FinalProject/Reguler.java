@@ -34,4 +34,9 @@ public class Reguler extends Pengiriman{
     public StringProperty namaProperty() {
         return this.nama;
     }
+
+    @Override
+    public String getJenis() {
+        return this.nama.get();
+    }
 }

@@ -22,6 +22,7 @@ public class Transaksi{
         this.Harga = new SimpleIntegerProperty(pengiriman.hitung() * lokasi.jarak());
     }
     
+    
     public IntegerProperty hargaProperty(){
         return this.Harga;
     }
@@ -29,41 +30,6 @@ public class Transaksi{
     public StringProperty penerimaProperty(){
         return penerima.nama;
     }
-    
-    public String getNamapengirim(){
-        return pengirim.getNama();
-    }
-    public String getAlamatpengirim(){
-        return pengirim.getAlamat();
-    }
-    
-    public String getNoHpPengirim(){
-        return pengirim.getNo_hp();
-    }
-    
-    
-    
-    public String getAlamatpenerima(){
-        return penerima.getAlamat();
-    }
-    
-    public String getNamapenerima(){
-        return penerima.getNama();
-    }
-    
-    public String getNoHpPenerima(){
-        return penerima.getNo_hp();
-    }
-    
-    public int getIDlokasi(){
-        return lokasi.lokasi.get();
-    }
-    
-    public String getNamalokasi(){
-        return lokasi.NamaLok.get();
-    }
-    
-    
     
     public StringProperty pengirimProperty(){
         return pengirim.nama;

@@ -17,6 +17,15 @@ public abstract class Pengiriman{
     }
     
     public abstract int hitung();
+    
+    public int getID(){
+        return this.id.get();
+    }
+    
+    public abstract String getJenis();
+    
+    
+    
     public abstract IntegerProperty hitungProperty();
     public abstract String jenisPengiriman();
     public abstract StringProperty namaProperty();

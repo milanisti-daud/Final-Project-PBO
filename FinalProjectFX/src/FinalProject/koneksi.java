@@ -7,13 +7,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Java Source Code
- */
 public class koneksi {
         
-        public static String MYSQLhost = "jdbc:mysql://localhost/finalproject";
+        public static String MYSQLhost = "jdbc:mysql://localhost/dluldb";
         public static String user = "root";
         public static String pass = "";
         
@@ -37,7 +33,7 @@ public class koneksi {
        else if ("SQLITE".equals(driver)){
            try {
                     Class.forName("org.sqlite.JDBC");
-                    conn = DriverManager.getConnection("jdbc:sqlite:D:\\tubes\\sqlite\\finalproject.sqlite");
+                    conn = DriverManager.getConnection("jdbc:sqlite:D:\\tubes\\sqlite\\DLULdb.sqlite");
                     return conn;
                 } catch (ClassNotFoundException ex) {
                     System.out.println("Librari tidak ada");

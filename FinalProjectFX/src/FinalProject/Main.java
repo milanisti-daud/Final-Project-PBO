@@ -4,7 +4,10 @@
  */
 package FinalProject;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -26,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author ACER
  */
-public class Main extends Application {
+public class Main extends Application{
     
     TableView tab = new TableView();
     ObservableList Data = FXCollections.observableArrayList();
@@ -40,11 +44,33 @@ public class Main extends Application {
     ComboBox Lokasi = new ComboBox();
     ArrayList<String> id_lokasi = new ArrayList<String>();
     ArrayList<String> JP = new ArrayList<String>();
-    int id = 1;
+    Label DB = new Label();
+    Label DBStatus = new Label();
+    Label DataStatus = new Label();
+    Label datastatus = new Label();
+    Transaksi trans;
+    DLULdatamodel DDM;
+    int id = 0;
+    
     
     @Override
     public void start(Stage primaryStage) {
+        try {
+            DDM = new DLULdatamodel("MYSQL");
+            DBStatus.setText(DDM.CONN==null?"Not Connected":"Connected");
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            Data = DDM.getData();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        DBStatus.setStyle("-fx-font-size: 8px;");
+        
+        DB.setText("DB Status : ");
+        DB.setStyle("-fx-font-size: 8px;");
         Label judul = new Label();
         judul.setText("DARI LAMPUNG UNTUK LAMPUNG");
         judul.setMinHeight(5);
@@ -102,12 +128,18 @@ public class Main extends Application {
         
         Button btn = new Button();
         btn.setText("Input Data");
+        
         btn.setOnAction(new EventHandler<ActionEvent>() {
-    
+           
             @Override
             public void handle(ActionEvent event) {
+                try {
+                    id = DDM.ID();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 if (Jenis.getValue().toString().equals("Reguler")){
-                    Data.add(new Transaksi(id,
+                    trans = new Transaksi(id,
                         new Pengirim(
                         Nama.getText(),AlamatPeng.getText(),no_hp.getText()),
                         new Reguler(
@@ -118,14 +150,15 @@ public class Main extends Application {
                             Penerima.getText(),AlamatPenerima.getText(),noPenerima.getText()),
                         new Lokasi(
                             id_lokasi.indexOf(Lokasi.getValue().toString()))
-                            ));
-                    id = id+1;
+                            );
+                    Data.add(trans);
+                   
                 }
                 else if (Jenis.getValue().toString().equals("Express")){
-                    Data.add(new Transaksi(id,
+                    trans = new Transaksi(id,
                         new Pengirim(
                         Nama.getText(),AlamatPeng.getText(),no_hp.getText()),
-                        new Express(
+                        new Express (
                         id,Lokasi.getValue().toString(),id_lokasi.indexOf(
                             Lokasi.getValue().toString()),JP.indexOf(
                             Jenis.getValue().toString())),
@@ -133,8 +166,8 @@ public class Main extends Application {
                             Penerima.getText(),AlamatPenerima.getText(),noPenerima.getText()),
                         new Lokasi(
                             id_lokasi.indexOf(Lokasi.getValue().toString()))
-                            ));
-                    id = id+1;
+                            );
+                    Data.add(trans);
                 }
                 Nama.clear();
                 AlamatPeng.clear();
@@ -144,7 +177,12 @@ public class Main extends Application {
                 Penerima.clear();
                 AlamatPenerima.clear();
                 noPenerima.clear();
-//                Lokasi lk = new Lokasi(id_lokasi.indexOf(Lokasi.getValue().toString()));
+                try {
+                    DDM.inputData(trans);
+                } catch (SQLException ex) {
+                    System.out.println("GAGAL INPUT");
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
@@ -176,11 +214,14 @@ public class Main extends Application {
         tab.getColumns().setAll(colID,colPengirim,colJenis,colLokasi,colPenerima,colHarga);
         VBox Btabel = new VBox();
         VBox Bform = new VBox(10);
+        HBox Status = new HBox(3);
+        Status.setMaxHeight(1);
+        Status.getChildren().addAll(DB,DBStatus);
         GridPane root = new GridPane();
         root.add(Btabel, 0, 0,1,1);
         Btabel.getChildren().add(tab);
         root.add(Bform, 1, 0,1,1);
-        Bform.getChildren().addAll(judul,subjudul,Nama,
+        Bform.getChildren().addAll(Status,judul,subjudul,Nama,
                 AlamatPeng,no_hp,Jenis,Lokasi,Penerima,AlamatPenerima,
                 noPenerima,btn);
         Bform.setStyle("-fx-padding:10;");
@@ -194,7 +235,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-//        launch(args);
-          
+            launch(args);      
     }
 }
