@@ -1,5 +1,7 @@
 # Final Project PBO - Dari Lampung Untuk Lampung
 
+'Dari Lampung Untuk Lampung' merupakan Sistem Informasi yang dapat digunakan untuk menginput data Pengiriman paket yang dikirim dari Bandar Lampung menuju berbagai kabupaten/kota yang berada di Lampung
+
 Daud Maranatha Purba 1917051042
 
 Adrian Septa Yoka 1917051043
