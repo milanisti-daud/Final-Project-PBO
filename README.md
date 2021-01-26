@@ -10,8 +10,6 @@ Achmad Romadoni 1917051055
 
 Untuk pembagian tugas Final Project dikerjakan bersama-sama
 
-> Untuk penjelasan lebih lengkap bisa dilihat pada https://youtu.be/jFVLwfo75_I
-
 ### Class Diagram
 ```mermaid
 classDiagram
